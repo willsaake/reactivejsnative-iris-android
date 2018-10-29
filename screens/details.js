@@ -1,21 +1,35 @@
+// @flow
+
 import React, { Component } from 'react';
 import { Button, View, Text, StyleSheet } from 'react-native';
+import type { NavigationScreenProp } from 'react-navigation'
 
-export default class DetailsScreen extends Component {
+type Props = {
+  navigation: NavigationScreenProp<any>
+};
+
+export default class DetailsScreen extends Component<Props> {
+  itemId: string;
+  otherParam: string;
+
   styles = StyleSheet.create({
     buttonToButtonSpacing: {
       marginTop: 5,
       marginBottom: 5
     }
-  })
+  });
 
-  constructor (props) {
-    super(props)
+  constructor (props: Props) {
+    super(props);
 
-    itemId = props.navigation.getParam('itemId', 'NO-ID');
-    otherParam = props.navigation.getParam('otherParam', 'some default value');
+    this.itemId = props.navigation.getParam('itemId', 'NO-ID');
+    this.otherParam = props.navigation.getParam('otherParam', 'some default value');
+    console.log("Hi, " + this.itemId + " " + this.otherParam);
   }
 
+  // Why even have typing if the type doesn't matter @flow ??...
+  //static navigationOptions = ({ navigation, navigationOptions, screenProps } : { navigation: any, navigationOptions: any, screenProps: any }) => {
+  // $FlowFixMe
   static navigationOptions = ({ navigation, navigationOptions, screenProps }) => {
     console.log(navigationOptions);
 
@@ -30,10 +44,6 @@ export default class DetailsScreen extends Component {
       },
     };
   };
-
-  get currentItemId() {
-    return this.itemId
-  }
 
   render() {
     let nextItemId = Math.floor(Math.random() * 100);

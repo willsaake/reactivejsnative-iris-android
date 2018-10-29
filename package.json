@@ -13,7 +13,10 @@
     "react-navigation": "^2.18.2"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-jest": "23.6.0",
+    "flow-bin": "^0.84.0",
+    "flow-upgrade": "^1.1.0",
     "jest": "23.6.0",
     "metro-react-native-babel-preset": "0.48.1",
     "react-test-renderer": "16.6.0-alpha.8af6728"

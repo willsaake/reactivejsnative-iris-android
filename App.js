@@ -28,7 +28,12 @@ const RootStack = StackNavigator(
   }
 );
 
-export default class App extends Component {
+type Props = {
+  className?: string,
+  disabled?: boolean
+};
+
+export default class App extends Component<Props> {
   render() {
     return <RootStack />;
   }
